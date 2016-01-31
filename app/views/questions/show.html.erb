@@ -1,0 +1,17 @@
+<h1><%= @question.title %></h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <p><%= @question.body %></p>
+  </div>
+  <div class="col-md-4">
+    <%= link_to "Edit", edit_question_path(@question), class: 'btn btn-success' %>
+    <%= link_to "Delete Question", @question, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want ot delete this question?'} %>
+    <% if @question.resolved %>
+      <h4 style="color: #cccccc">resolved <span class="glyphicon glyphicon-ok"></span></h4>
+    <% else %>
+      <h4 style="color: #330000">unresolved <span class="glyphicon glyphicon-question-sign"></span></h4>
+    <% end %>
+    <p style="font-size: 50%;">provided by <a href="http://glyphicons.com/">Glyphicons</a>
+  </div>
+</div>
