@@ -45,4 +45,24 @@ RSpec.describe User, type: :model do
       expect(user_with_invalid_email_format).to_not be_valid
     end
   end
+
+  describe "validating the name" do
+    it "should work on already-formatted names" do
+      user.name = "Caroline Courtney"
+      user.save
+      expect(user.name).to eq "Caroline Courtney"
+    end
+
+    it "should work on a name with only lowercase letters" do
+      user.name = "bloccit superuser"
+      user.save
+      expect(user.name).to eq "Bloccit Superuser"
+    end
+
+    it "should work on a name with randomly-cased letters" do
+      user.name = "bAd KiTteh"
+      user.save
+      expect(user.name).to eq "Bad Kitteh"
+    end
+  end
 end
