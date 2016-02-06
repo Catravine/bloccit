@@ -24,3 +24,25 @@
 .nav {
   margin-top: 5px;
 }
+
+.pull-right {
+  margin-bottom: 10px;
+}
+
+.pull-right ul {
+  float: left;
+  list-style-type: none;
+  text-align: right;
+}
+
+.current-user {
+  color: #666;
+  font-weight: bold;
+  font-size: 150%;
+  margin-right: -5px;
+}
+
+.pull-right img {
+  float: right;
+  margin-left: 15px;
+}
