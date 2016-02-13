@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213072857) do
+ActiveRecord::Schema.define(version: 20160213075717) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -53,17 +53,6 @@ ActiveRecord::Schema.define(version: 20160213072857) do
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
-  create_table "sponsored_posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "price"
-    t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sponsored_posts", ["topic_id"], name: "index_sponsored_posts_on_topic_id"
-
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.boolean  "public",      default: true
@@ -80,16 +69,5 @@ ActiveRecord::Schema.define(version: 20160213072857) do
     t.datetime "updated_at",      null: false
     t.integer  "role"
   end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer  "value"
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "votes", ["post_id"], name: "index_votes_on_post_id"
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end
