@@ -19,7 +19,7 @@
       <%= render @post.comments %>
     </div>
     <% if current_user %>
-      <%= render 'comments/form', comment: Comment.new, post: @post %>
+      <%= render 'comments/form', parent: @post, comment: Comment.new %>
     <% end %>
   </div>
   <div class="col-md-4">
