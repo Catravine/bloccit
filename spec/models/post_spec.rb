@@ -75,6 +75,13 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq(old_rank - 1)
       end
     end
-
   end
+
+  describe "#create_vote callback" do
+    it "makes the post have an automatic upvote from the author" do
+      post
+      expect(post.points).to eq(1)
+    end
+  end
+
 end
