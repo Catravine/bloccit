@@ -16,5 +16,9 @@
 !/log/.keep
 /tmp
 
+# Ignore migrations that undo non-relevant changes
+/db/migrate/20160213072857*
+/db/migrate/20160213075717*
+
 # Ignore application configuration
 /config/application.yml
