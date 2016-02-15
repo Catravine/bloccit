@@ -1,0 +1,10 @@
+Your new post: "<%= @post.title %>"
+ <%= "=" * (@post.title.length + 12) %>
+
+ You posted as: <%= @user.name %>
+
+ <%= @post.body %>
+
+ You are automatically set to receive notifications on your post, comments etc.  Unfavorite the post to stop receiving this information.
+
+ Visit online at: <%= topic_post_url(@post.topic, @post) %>
