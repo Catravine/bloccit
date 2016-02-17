@@ -5,7 +5,7 @@ RSpec.describe Vote, type: :model do
   let(:topic) { build(:topic) }
   let(:user) { build(:user) }
   let(:post) { build(:post) }
-  let(:vote) { Vote.create!(value: 1, post: post, user: user) }
+  let(:vote) { build(:vote, post: post, user: user) }
 
   it { is_expected.to belong_to(:post) }
   it { is_expected.to belong_to(:user) }

@@ -16,11 +16,34 @@
         </small>
       </div>
     </div>
+    <h2>Posts</h2>
+    <%= user_posts(@user) %>
+
+    <h2>Comments</h2>
+    <%= user_comments(@user) %>
+  </div>
+  <div class="col-md-4" style="border-left: 1px solid #ccc;">
+    <h3><%= @user.name %>'s Favorited Posts</h3>
+    <% @user.favorites.each do |fave| %>
+      <div class="media">
+        <% avatar_url = fave.post.user.avatar_url(32) %>
+        <% if avatar_url %>
+          <div class="pull-right">
+            <%= image_tag avatar_url, class: 'media-object', style: 'border: 2px solid #ccc;' %>
+          </div>
+        <% end %>
+        <%= render partial: 'votes/voter', locals: { post: fave.post } %>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to fave.post.title, topic_post_path(fave.post.topic, fave.post) %>
+            <%= render partial: "labels/list", locals: { labels: fave.post.labels } %>
+          </h4>
+          <small>
+            submitted <%= time_ago_in_words(fave.post.created_at) %> ago by <%= link_to fave.post.user.name, user_path(fave.post.user) %> <br>
+            <%= fave.post.comments.count %> Comments
+          </small>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<h2>Posts</h2>
-<%= render @user.posts %>
-
-<h2>Comments</h2>
-<%= render @user.comments %>
