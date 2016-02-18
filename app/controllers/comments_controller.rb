@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :require_sign_in
   before_action :authorize_user, only: [:destroy]
 
   def create
@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
 
     if comment.save
       flash[:notice] = "Comment save successfully."
+      redirect_to [@post.topic, @post]
     else
       flash[:alert] = "Comment failed to save."
+      redirect_to [@post.topic, @post]
     end
-    redirect_to [@post.topic, @post]
   end
 
   def destroy
