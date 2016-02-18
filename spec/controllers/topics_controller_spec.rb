@@ -3,13 +3,9 @@ include RandomData
 include SessionsHelper
 
 RSpec.describe TopicsController, type: :controller do
-<<<<<<< HEAD
 
   let(:my_topic) { FactoryGirl.create(:topic) }
   let(:my_private_topic) { FactoryGirl.create(:topic, public: false) }
-=======
-  let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description:   RandomData.random_paragraph) }
->>>>>>> parent of 481131c... Checkpoint 45 User Profiles: completed
 
   context "guest" do
     describe "GET index" do
