@@ -28,7 +28,7 @@ RSpec.describe Topic, type: :model do
   describe "scopes" do
     before do
       @public_topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)
-      #@private_topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph, public: false)
+      @private_topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph, public: false)
     end
 
     describe "visible_to(user)" do
@@ -39,6 +39,20 @@ RSpec.describe Topic, type: :model do
 
       it "returns only public topics if user is nil" do
         expect(Topic.visible_to(nil)).not_to include(@private_topic)
+      end
+    end
+
+    describe "publicly_viewable" do
+      it "only returns topics with public: true" do
+        expect(Topic.publicly_viewable).to include(@public_topic)
+        expect(Topic.publicly_viewable).not_to include(@private_topic)
+      end
+    end
+
+    describe "privately_viewable" do
+      it "only returns topics with public: false" do
+        expect(Topic.privately_viewable).to include(@private_topic)
+        expect(Topic.privately_viewable).not_to include(@public_topic)
       end
     end
   end
