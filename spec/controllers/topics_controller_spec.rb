@@ -14,11 +14,6 @@ RSpec.describe TopicsController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "assigns Topic.all to topic" do
-        get :index
-        expect(assigns(:topics)).to eq(Topic.all)
-      end
-
       it "does not include private topics in @topics" do
         get :index
         expect(assigns(:topics)).not_to include(my_private_topic)
