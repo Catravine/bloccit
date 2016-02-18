@@ -16,7 +16,7 @@ RSpec.describe TopicsController, type: :controller do
 
       it "assigns Topic.all to topic" do
         get :index
-        expect(assigns(:topics)).to eq([my_topic])
+        expect(assigns(:topics)).to eq(Topic.all)
       end
 
       it "does not include private topics in @topics" do
@@ -100,7 +100,7 @@ RSpec.describe TopicsController, type: :controller do
 
       it "assigns Topic.all to topic" do
         get :index
-        expect(assigns(:topics)).to eq([my_topic, my_private_topic])
+        expect(assigns(:topics)).to eq(Topic.all)
       end
     end
 
@@ -174,7 +174,7 @@ RSpec.describe TopicsController, type: :controller do
 
       it "assigns Topic.all to topic" do
         get :index
-        expect(assigns(:topics)).to eq([my_topic, my_private_topic])
+        expect(assigns(:topics)).to eq(Topic.all)
       end
     end
 
