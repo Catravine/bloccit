@@ -35,3 +35,5 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 
 gem 'figaro', '1.0'
+
+gem 'responders', '~> 2.0'
