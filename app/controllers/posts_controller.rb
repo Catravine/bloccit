@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :require_sign_in, except: :show
+  skip_before_filter :require_sign_in, only: :show
   before_action :authorize_user, except: [:show, :new, :create]
 
   def show

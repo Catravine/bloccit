@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  before_action :require_sign_in
+
   private
   def require_sign_in
     unless current_user

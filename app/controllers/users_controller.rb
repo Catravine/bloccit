@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :require_sign_in
+
   def new
     @user = User.new
   end
