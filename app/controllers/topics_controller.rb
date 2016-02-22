@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
 
-before_action :require_sign_in, except: [:index, :show]
-before_action :authorize_user, except: [:index, :show]
+skip_before_action :require_sign_in, only: [:index, :show]
+skip_before_action :authorize_user, only: [:index, :show]
 
   def index
     @topics = Topic.visible_to(current_user)

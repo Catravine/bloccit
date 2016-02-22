@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :require_sign_in
+  before_action :authorize_user
 
   private
   def require_sign_in
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You must be logged in to do that"
       redirect_to new_session_path
     end
+  end
+
+  def authorize_user
+    return true
   end
 
 end
