@@ -1,6 +1,6 @@
 class Api::V1::TopicsController < Api::V1::BaseController
 
-  skip_before_action :authenticate_user, only: [:index, :show]
+  skip_before_action :require_sign_in, only: [:index, :show]
   skip_before_action :authorize_user, only: [:index, :show]
 
   def index
