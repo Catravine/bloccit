@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :authorize_user, only: [:destroy]
+  skip_before_action :authorize_user, except: [:destroy]
 
   def create
     @post = Post.find(params[:post_id])

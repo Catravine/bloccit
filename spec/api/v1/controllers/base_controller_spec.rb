@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BaseController, type: :controller do
+
   let(:my_user) { FactoryGirl.create(:user) }
 
   context "authorized user" do
