@@ -1,7 +1,7 @@
 class Api::V1::TopicsController < Api::V1::BaseController
 
   skip_before_action :require_sign_in, only: [:index, :show, :update, :create, :destroy]
-  skip_before_action :authorize_user, only: [:index, :show, :update, :create, :destroy]
+  skip_before_action :authorize_user
   before_action :authenticate_user, except: [:index, :show]
 
   def index
@@ -45,10 +45,25 @@ class Api::V1::TopicsController < Api::V1::BaseController
     end
   end
 
+  def create_post(title, body)
+    @title, @body = title, body
+    post = Post.new(title: @title, body: @body, user: @current_user, topic: Topic.find(params[:topic_id]))
+    if post.valid?
+      post.save!
+      render json: post.to_json, status: 201
+    else
+      render json: {error: "Post is invalid", status: 400}, status: 400
+    end
+  end
+
   private
 
   def topic_params
     params.require(:topic).permit(:name, :description, :public)
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :body, :topic, :user)
   end
 
 end
